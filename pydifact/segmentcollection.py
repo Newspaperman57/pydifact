@@ -195,6 +195,8 @@ class AbstractSegmentsContainer:
         Note: skips segments that are header oder footer tags of this segment container type.
         :param segment: The segment to add
         """
+        if segment.tag == self.HEADER_TAG:
+            extra_header_elements = segment.elements[5:]
         if not segment.tag in (self.HEADER_TAG, self.FOOTER_TAG):
             self.segments.append(segment)
         return self
